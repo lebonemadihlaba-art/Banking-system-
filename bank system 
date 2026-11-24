@@ -1,0 +1,205 @@
+#include <iostream>
+
+Using namespace std;
+
+//Banking Variables
+Double deposit, withdrawal, balance;
+Double TransferAccount=0;
+Int cash;
+
+//Constant Banking Variable
+Double const_original_amount=10000;
+Int ExitCode=6;
+
+//Array Of Customer Name
+String CustomerName[3]={“LIAM SMITH”, “EMMA JOHNSON”, “AVA JONES”};
+
+//Array Of Account Number
+Int AccountNumber[3]={1234, 5678, 9012};
+
+//Array Of Account PIN
+Int AccountPin[3]={9004, 6769, 4200};
+
+//Array Of Account Balance
+Double AccountBalance[3]={6000, 8000, 10000};
+
+Void DepositAmount()
+{
+    Cout<<”***************DEPOSIT**************”<<endl;
+
+    Cout<<””<<endl;
+
+    Cout<<”HOW MUCH WOULD YOU LIKE TO DEPOSIT IN YOUR ACCOUNT “<<endl;
+    Cin>>deposit;
+
+    Cout<<””<<endl;
+
+    If ( deposit<0 )
+        Cout<<”YOU CAN NOT DEPOSIT THAT AMOUNT”<<endl;
+    Else
+    {
+        Balance=balance + deposit;
+        Cout<<”DEPOSIT:R “<<deposit<<endl;
+        Cout<<”BALANCE:R “<<balance<<endl;
+
+        Cout<<””<<endl;
+
+        Cout<<”THANK YOU FOR DEPOSITING R “<<deposit<<” IN OUR BANK. “<<endl;
+    }
+}
+
+Void WithdrawalAmount()
+{
+    Cout<<”***************WITHDRAWAL**************”<<endl;
+
+    Cout<<””<<endl;
+
+    Cout<<”HOW MUCH WOULD YOU LIKE TO WITHDRAW FROM YOUR ACCOUNT “<<endl;
+    Cin>>withdrawal;
+
+    Cout<<””<<endl;
+
+    If (withdrawal>balance)
+        Cout<<”YOUR WITHDRAWAL AMOUNT CAN’T EXCEED YOUR BALANCE IN YOUR ACCOUNT”<<endl;
+    Else
+    {
+        Balance=const_original_amount – withdrawal;
+        Cout<<”BALANCE:R “<<balance<<endl;
+
+        Cout<<””<<endl;
+
+        Cout<<”THANK YOU FOR WITHDRAWING FROM OUR BANK. “<<endl;
+    }
+}
+
+Void CashSending()
+{
+    Cout<<”***************SEND CASH**************”<<endl;
+
+    Cout<<””<<endl;
+
+    Cout<<”HOW MUCH WOULD YOU LIKE TO SEND TO ANOTHER ACCOUNT “<<endl;
+    Cin>>cash;
+
+    Cout<<””<<endl;
+
+    If (cash>balance)
+        Cout<<”YOUR SEND AN AMOUNT FOR MONEY THAT EXCEED YOUR BALANCE IN YOUR ACCOUNT”<<endl;
+    Else
+    {
+        Balance=balance – cash;
+        Cout<<”BALANCE ON YOUR ACCOUNT:R “<<balance<<endl;
+
+        Cout<<””<<endl;
+
+        TransferAccount=TransferAccount + cash;
+        Cout<<”BALANCE ON THE TRANSFER ACCOUNT:R “<<TransferAccount<<endl;
+
+        Cout<<””<<endl;
+
+        Cout<<”THANK YOU FOR SENDING TO ANOTHER ACCOUNT. “<<endl;
+
+        Cout<<””<<endl;
+    }
+}
+
+Void BalanceCheck()
+{
+    Cout<<”***************CHECK BALANCE**************”<<endl;
+
+    Cout<<””<<endl;
+
+    Balance=balance;
+    Cout<<”BALANCE:R “<<balance<<endl;
+
+    Cout<<””<<endl;
+}
+
+Void ArrayDisplay()
+{
+    //Displaying Customer names
+    Cout<<”1. CUSTOMER: “<<CustomerName[0]<<”, “<<”ACCOUNT NUMBER: “<<AccountNumber[0]<<”, “<<”PIN: “<<AccountPin[0]<<”, “<<”BALANCE:R “<<AccountBalance[0]<<endl;
+
+    Cout<<””<<endl;
+
+    Cout<<”2. CUSTOMER: “<<CustomerName[1]<<”, “<<”ACCOUNT NUMBER: “<<AccountNumber[1]<<”, “<<”PIN: “<<AccountPin[1]<<”, “<<”BALANCE:R “<<AccountBalance[1]<<endl;
+
+    Cout<<””<<endl;
+
+    Cout<<”3. CUSTOMER: “<<CustomerName[2]<<”, “<<”ACCOUNT NUMBER: “<<AccountNumber[2]<<”, “<<”PIN: “<<AccountPin[2]<<”, “<<”BALANCE:R “<<AccountBalance[2]<<endl;
+
+    Cout<<””<<endl;
+}
+
+Void ExitSystem()
+{
+    Cout<<”***************EXIT/CONTIUNE SYSTEM**************”<<endl;
+
+    Cout<<””<<endl;
+
+    Cout<<”THANK YOU FOR USING OUR BANKING SYSTEM”<<endl;
+}
+
+Void MeunDisplay()
+{
+    Int BankingSystemOptions;
+
+    Balance=const_original_amount;
+
+    Do{
+        Cout<<”**************************************************”<<endl;
+        Cout<<” WELCOME TO THE ORION STAR BANK “<<endl;
+        Cout<<”**************************************************”<<endl;
+
+        Cout<<””<<endl;
+
+        Cout<<”1. DEPOSIT “<<endl;
+        Cout<<”2. WITHDRAW “<<endl;
+        Cout<<”3. SEND CASH “<<endl;
+        Cout<<”4. CHECK BALANCE “<<endl;
+        Cout<<”5. CUSTOMER INFORMATION “<<endl;
+        Cout<<”6. EXIT “<<endl;
+        Cin>>BankingSystemOptions;
+
+        Cout<<””<<endl;
+
+        Switch (BankingSystemOptions)
+        {
+        Case 1:
+            DepositAmount();
+            Break;
+
+        Case 2:
+            WithdrawalAmount();
+            Break;
+
+        Case 3:
+            CashSending();
+            Break;
+
+        Case 4:
+            BalanceCheck();
+            Break;
+
+        Case 5:
+            ArrayDisplay();
+            Break;
+
+        Case 6:
+            ExitSystem();
+            Break;
+
+        Default:
+            Cout<<”OUR BANK NOR OUR BANKING SYSTEM DO NOT OFFER SUCH OPTIONS. “<<endl;
+            Break;
+        }
+    }
+    While (BankingSystemOptions != ExitCode);
+}
+
+Int main()
+{
+    MeunDisplay();
+    Return 0;
+}
+
